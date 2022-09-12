@@ -16,15 +16,23 @@
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (event) => {
             colorScheme = event.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", colorScheme);
             input.checked = colorScheme == "dark" ? true : false;
         });
 
+    
+    input.onchange = (event: Event) => {
+        const checked = (event.target as any)?.checked;
+        document.documentElement.setAttribute("data-theme", checked ? "dark" : "light");
+    }
+
     input.checked = colorScheme == "dark" ? true : false;
+    
 </script>
 
 <span id="root">
     <span id="switch">
-        <input disabled id="input" type="checkbox" />
+        <input id="input" type="checkbox" />
         <span id="thumb"></span>
     </span>
     <span id="track"></span>
@@ -42,7 +50,7 @@
         width: 55px;
         height: 34px;
         padding: 7px;
-        margin: 8px;
+        margin: 1rem;
         float: right;
     }
 
@@ -60,7 +68,7 @@
         outline: 0px;
         border: 0px;
         margin: 0px;
-        cursor: not-allowed;
+        cursor: pointer;
         user-select: none;
         vertical-align: middle;
         appearance: none;
@@ -106,7 +114,7 @@
     }
 
     #thumb {
-        background-color: rgb(101, 101, 101);
+        background-color: rgb(0, 56, 146);
         width: 32px;
         height: 32px;
         box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
