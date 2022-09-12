@@ -20,11 +20,13 @@
             input.checked = colorScheme == "dark" ? true : false;
         });
 
-    
     input.onchange = (event: Event) => {
         const checked = (event.target as any)?.checked;
-        document.documentElement.setAttribute("data-theme", checked ? "dark" : "light");
-    }
+        document.documentElement.setAttribute(
+            "data-theme",
+            checked ? "dark" : "light"
+        );
+    };
 
     input.checked = colorScheme == "dark" ? true : false;
     document.documentElement.setAttribute("data-theme", colorScheme);
@@ -32,7 +34,7 @@
 
 <span id="root">
     <span id="switch">
-        <input id="input" type="checkbox" aria-label="Toggle color theme"/>
+        <input id="input" type="checkbox" aria-label="Toggle color theme" />
         <span id="thumb"></span>
     </span>
     <span id="track"></span>
